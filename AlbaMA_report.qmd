@@ -1,0 +1,510 @@
+---
+title: "AMA Production Jobs Report"
+format: html
+execute:
+  echo: false
+  warning: false
+  message: false
+lang: en
+language:
+  code: r
+---
+
+# Production & Nonsupervisory Employees
+
+This report visualizes the Adaptive Moving Average (AMA) results for each industry.
+
+```{r setup}
+library(here)
+source(here::here("plot_ama_job.R"))
+#source(here::here("AMA_main.R"))
+get_b6_order <- function() {
+    c(
+        "Total_private",
+        "Goods_producing",
+        "Mining_logging",
+        "Construction",
+        "Manufacturing",
+        "Durable_goods",
+        "Nondurable_goods",
+        "Private_service_providing",
+        "Trade_transportation_utilities",
+        "Wholesale_trade",
+        "Retail_trade",
+        "Transportation_warehousing",
+        "Utilities",
+        "Information",
+        "Financial_activities",
+        "Professional_business_services",
+        "Education_health_services",
+        "Leisure_hospitality",
+        "Other_services"
+    )
+}
+industries <- get_b6_order()
+# Only keep those for which a production_jobs RDS file exists
+rds_files <- list.files(
+    here::here("data/ama_jobs"),
+    pattern = "^production_jobs_(.*)_ama\\.rds$",
+    full.names = FALSE
+)
+rds_inds <- gsub("^production_jobs_(.*)_ama\\.rds$", "\\1", rds_files)
+industries <- industries[industries %in% rds_inds]
+```
+
+
+## Total private
+
+### AMA Job Results
+
+```{r}
+plot_ama_job(
+    industry_name = "Total_private",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+### AMA Look-back Window (Right)
+
+```{r}
+plot_lookback_right(
+    industry_name = "Total_private",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+---
+
+## Goods producing
+
+### AMA Job Results
+
+```{r}
+plot_ama_job(
+    industry_name = "Goods_producing",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+### AMA Look-back Window (Right)
+
+```{r}
+plot_lookback_right(
+    industry_name = "Goods_producing",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+---
+
+## Mining logging
+
+### AMA Job Results
+
+```{r}
+plot_ama_job(
+    industry_name = "Mining_logging",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+### AMA Look-back Window (Right)
+
+```{r}
+plot_lookback_right(
+    industry_name = "Mining_logging",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+---
+
+## Construction
+
+### AMA Job Results
+
+```{r}
+plot_ama_job(
+    industry_name = "Construction",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+### AMA Look-back Window (Right)
+
+```{r}
+plot_lookback_right(
+    industry_name = "Construction",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+---
+
+## Manufacturing
+
+### AMA Job Results
+
+```{r}
+plot_ama_job(
+    industry_name = "Manufacturing",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+### AMA Look-back Window (Right)
+
+```{r}
+plot_lookback_right(
+    industry_name = "Manufacturing",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+---
+
+## Durable goods
+
+### AMA Job Results
+
+```{r}
+plot_ama_job(
+    industry_name = "Durable_goods",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+### AMA Look-back Window (Right)
+
+```{r}
+plot_lookback_right(
+    industry_name = "Durable_goods",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+---
+
+## Nondurable goods
+
+### AMA Job Results
+
+```{r}
+plot_ama_job(
+    industry_name = "Nondurable_goods",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+### AMA Look-back Window (Right)
+
+```{r}
+plot_lookback_right(
+    industry_name = "Nondurable_goods",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+---
+
+## Private service providing
+
+### AMA Job Results
+
+```{r}
+plot_ama_job(
+    industry_name = "Private_service_providing",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+### AMA Look-back Window (Right)
+
+```{r}
+plot_lookback_right(
+    industry_name = "Private_service_providing",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+---
+
+## Trade transportation utilities
+
+### AMA Job Results
+
+```{r}
+plot_ama_job(
+    industry_name = "Trade_transportation_utilities",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+### AMA Look-back Window (Right)
+
+```{r}
+plot_lookback_right(
+    industry_name = "Trade_transportation_utilities",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+---
+
+## Wholesale trade
+
+### AMA Job Results
+
+```{r}
+plot_ama_job(
+    industry_name = "Wholesale_trade",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+### AMA Look-back Window (Right)
+
+```{r}
+plot_lookback_right(
+    industry_name = "Wholesale_trade",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+---
+
+## Retail trade
+
+### AMA Job Results
+
+```{r}
+plot_ama_job(
+    industry_name = "Retail_trade",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+### AMA Look-back Window (Right)
+
+```{r}
+plot_lookback_right(
+    industry_name = "Retail_trade",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+---
+
+## Transportation warehousing
+
+### AMA Job Results
+
+```{r}
+plot_ama_job(
+    industry_name = "Transportation_warehousing",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+### AMA Look-back Window (Right)
+
+```{r}
+plot_lookback_right(
+    industry_name = "Transportation_warehousing",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+---
+
+## Utilities
+
+### AMA Job Results
+
+```{r}
+plot_ama_job(
+    industry_name = "Utilities",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+### AMA Look-back Window (Right)
+
+```{r}
+plot_lookback_right(
+    industry_name = "Utilities",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+---
+
+## Information
+
+### AMA Job Results
+
+```{r}
+plot_ama_job(
+    industry_name = "Information",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+### AMA Look-back Window (Right)
+
+```{r}
+plot_lookback_right(
+    industry_name = "Information",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+---
+
+## Financial activities
+
+### AMA Job Results
+
+```{r}
+plot_ama_job(
+    industry_name = "Financial_activities",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+### AMA Look-back Window (Right)
+
+```{r}
+plot_lookback_right(
+    industry_name = "Financial_activities",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+---
+
+## Professional business services
+
+### AMA Job Results
+
+```{r}
+plot_ama_job(
+    industry_name = "Professional_business_services",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+### AMA Look-back Window (Right)
+
+```{r}
+plot_lookback_right(
+    industry_name = "Professional_business_services",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+---
+
+## Education health services
+
+### AMA Job Results
+
+```{r}
+plot_ama_job(
+    industry_name = "Education_health_services",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+### AMA Look-back Window (Right)
+
+```{r}
+plot_lookback_right(
+    industry_name = "Education_health_services",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+---
+
+## Leisure hospitality
+
+### AMA Job Results
+
+```{r}
+plot_ama_job(
+    industry_name = "Leisure_hospitality",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+### AMA Look-back Window (Right)
+
+```{r}
+plot_lookback_right(
+    industry_name = "Leisure_hospitality",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+---
+
+## Other services
+
+### AMA Job Results
+
+```{r}
+plot_ama_job(
+    industry_name = "Other_services",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+### AMA Look-back Window (Right)
+
+```{r}
+plot_lookback_right(
+    industry_name = "Other_services",
+    job_type = "production",
+    start_date = "2015-01-01"
+)
+```
+
+---

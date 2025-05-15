@@ -1,0 +1,82 @@
+---
+title: "AMA All Jobs Report"
+format: html
+execute:
+  echo: false
+  warning: false
+  message: false
+lang: en
+language:
+  code: r
+---
+
+# All Employees
+
+This report visualizes the Adaptive Moving Average (AMA) results for each industry (all jobs).
+
+```{r setup}
+library(here)
+source(here::here("plot_ama_job.R"))
+# Table B-1 order from FRED
+get_b1_order <- function() {
+    c(
+        "Total_nonfarm",
+        "Total_private",
+        "Goods_producing",
+        "Mining_and_logging",
+        "Mining_logging",
+        "Construction",
+        "Manufacturing",
+        "Durable_goods",
+        "Nondurable_goods",
+        "Trade_transportation_utilities",
+        "Wholesale_trade",
+        "Retail_trade",
+        "Transportation_and_warehousing",
+        "Utilities",
+        "Information",
+        "Financial_activities",
+        "Professional_and_business_services",
+        "Education_and_health_services",
+        "Leisure_and_hospitality",
+        "Other_services",
+        "Government",
+        "Federal",
+        "State_government",
+        "Local_government"
+    )
+}
+# Helper to get all industries for which an all_jobs RDS file exists
+get_all_jobs_industries <- function() {
+    rds_files <- list.files(
+        here::here("data/ama_jobs"),
+        pattern = "^all_jobs_(.*)_ama\\.rds$",
+        full.names = FALSE
+    )
+    inds <- gsub("^all_jobs_(.*)_ama\\.rds$", "\\1", rds_files)
+    inds
+}
+industries <- get_all_jobs_industries()
+# Sort industries by B-1 order, keep only those present
+b1_order <- get_b1_order()
+industries <- b1_order[b1_order %in% industries]
+```
+
+```{r, results='asis'}
+for (ind in industries) {
+    cat("\n## ", gsub("_", " ", ind), "\n\n")
+    cat("\n### AMA Job Results\n\n")
+    plot_ama_job(
+        industry_name = ind,
+        job_type = "all",
+        start_date = "2015-01-01"
+    )
+    cat("\n\n### AMA Look-back Window (Right)\n\n")
+    plot_lookback_right(
+        industry_name = ind,
+        job_type = "all",
+        start_date = "2015-01-01"
+    )
+    cat("\n---\n\n")
+}
+``` 

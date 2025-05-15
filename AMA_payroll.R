@@ -216,6 +216,8 @@ library(ggplot2)
 library(dplyr)
 library(tidyverse)
 
+data <- cc$data
+
 # --- TIME SERIES
 # ----------------
 plot1 <- data |>
@@ -246,13 +248,15 @@ plot1 <- data |>
     ) +
     xlab('') +
     ylab('') +
-    ggtitle(labeling) +
     theme_bw() +
     theme(legend.position = "bottom") +
-    coord_cartesian(ylim = c(-500, 500))
+    coord_cartesian(ylim = c(-150, 150))
 
 print(plot1)
 
+
+obs_imp_rf_center <- cc$obs_imp_rf_center
+obs_imp_rf_right <- cc$obs_imp_rf_right
 
 # --- LOOK-BACK WINDOW
 # -------------------------
