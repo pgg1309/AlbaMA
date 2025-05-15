@@ -1,6 +1,11 @@
 ---
 title: "AMA All Jobs Report"
-format: html
+format: 
+  html:
+    self-contained: true
+    toc: true
+    toc-location: left
+    toc-depth: 5
 execute:
   echo: false
   warning: false
@@ -18,34 +23,32 @@ This report visualizes the Adaptive Moving Average (AMA) results for each indust
 library(here)
 source(here::here("plot_ama_job.R"))
 # Table B-1 order from FRED
-get_b1_order <- function() {
-    c(
-        "Total_nonfarm",
-        "Total_private",
-        "Goods_producing",
-        "Mining_and_logging",
-        "Mining_logging",
-        "Construction",
-        "Manufacturing",
-        "Durable_goods",
-        "Nondurable_goods",
-        "Trade_transportation_utilities",
-        "Wholesale_trade",
-        "Retail_trade",
-        "Transportation_and_warehousing",
-        "Utilities",
-        "Information",
-        "Financial_activities",
-        "Professional_and_business_services",
-        "Education_and_health_services",
-        "Leisure_and_hospitality",
-        "Other_services",
-        "Government",
-        "Federal",
-        "State_government",
-        "Local_government"
-    )
-}
+name_to_rds <- c(
+    "# Total nonfarm" = "Total_nonfarm",
+    "## Total private" = "Total_private",
+    "### Goods-producing" = "Goods_producing",
+    "#### Mining and logging" = "Mining_and_logging",
+    "#### Construction" = "Construction",
+    "#### Manufacturing" = "Manufacturing",
+    "##### Durable goods" = "Durable_goods",
+    "##### Nondurable goods" = "Nondurable_goods",
+    "### Private service-providing" = "Private_service_providing",
+    "#### Trade, transportation, and utilities" = "Trade_transportation_utilities",
+    "##### Wholesale trade" = "Wholesale_trade",
+    "##### Retail trade" = "Retail_trade",
+    "##### Transportation and warehousing" = "Transportation_and_warehousing",
+    "##### Utilities" = "Utilities",
+    "#### Information" = "Information",
+    "#### Financial activities" = "Financial_activities",
+    "#### Professional and business services" = "Professional_and_business_services",
+    "#### Education and health services" = "Education_and_health_services",
+    "#### Leisure and hospitality" = "Leisure_and_hospitality",
+    "#### Other services" = "Other_services",
+    "## Government" = "Government",
+    "### Federal" = "Federal",
+    "### State government" = "State_government",
+    "### Local government" = "Local_government"
+)
 # Helper to get all industries for which an all_jobs RDS file exists
 get_all_jobs_industries <- function() {
     rds_files <- list.files(
@@ -58,25 +61,24 @@ get_all_jobs_industries <- function() {
 }
 industries <- get_all_jobs_industries()
 # Sort industries by B-1 order, keep only those present
-b1_order <- get_b1_order()
-industries <- b1_order[b1_order %in% industries]
+industries <- name_to_rds[name_to_rds %in% industries]
 ```
 
 ```{r, results='asis'}
-for (ind in industries) {
-    cat("\n## ", gsub("_", " ", ind), "\n\n")
-    cat("\n### AMA Job Results\n\n")
+for (i in 1:length(industries)) {
+    cat(base::names(name_to_rds[i]))
+    cat("\n\nAMA Job Results\n\n")
     plot_ama_job(
-        industry_name = ind,
+        industry_name = industries[i],
         job_type = "all",
         start_date = "2015-01-01"
     )
-    cat("\n\n### AMA Look-back Window (Right)\n\n")
+    cat("\n\nAMA Look-back Window (Right)\n\n")
     plot_lookback_right(
-        industry_name = ind,
+        industry_name = industries[i],
         job_type = "all",
         start_date = "2015-01-01"
     )
-    cat("\n---\n\n")
+    cat("\n\n")
 }
 ``` 

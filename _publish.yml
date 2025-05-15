@@ -1,0 +1,8 @@
+- source: AlbaMA_report.qmd
+  quarto-pub:
+    - id: a40c47f0-7260-44dc-acf0-828980551e1f
+      url: https://pgrahl.quarto.pub/ama-production-jobs-report
+- source: AlbaMA_report_all_jobs.qmd
+  quarto-pub:
+    - id: 3b8f1b5d-c69f-4e40-97d9-887452acc712
+      url: https://pgrahl.quarto.pub/ama-all-jobs-report

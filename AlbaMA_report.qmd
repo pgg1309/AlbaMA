@@ -1,6 +1,11 @@
 ---
 title: "AMA Production Jobs Report"
-format: html
+format: 
+  html:
+    self-contained: true
+    toc: true
+    toc-location: left
+    toc-depth: 2
 execute:
   echo: false
   warning: false
@@ -75,8 +80,6 @@ plot_lookback_right(
 )
 ```
 
----
-
 ## Goods producing
 
 ### AMA Job Results
@@ -98,8 +101,6 @@ plot_lookback_right(
     start_date = "2015-01-01"
 )
 ```
-
----
 
 ## Mining logging
 
@@ -123,8 +124,6 @@ plot_lookback_right(
 )
 ```
 
----
-
 ## Construction
 
 ### AMA Job Results
@@ -146,8 +145,6 @@ plot_lookback_right(
     start_date = "2015-01-01"
 )
 ```
-
----
 
 ## Manufacturing
 
@@ -171,8 +168,6 @@ plot_lookback_right(
 )
 ```
 
----
-
 ## Durable goods
 
 ### AMA Job Results
@@ -194,8 +189,6 @@ plot_lookback_right(
     start_date = "2015-01-01"
 )
 ```
-
----
 
 ## Nondurable goods
 
@@ -219,8 +212,6 @@ plot_lookback_right(
 )
 ```
 
----
-
 ## Private service providing
 
 ### AMA Job Results
@@ -242,8 +233,6 @@ plot_lookback_right(
     start_date = "2015-01-01"
 )
 ```
-
----
 
 ## Trade transportation utilities
 
@@ -267,8 +256,6 @@ plot_lookback_right(
 )
 ```
 
----
-
 ## Wholesale trade
 
 ### AMA Job Results
@@ -290,8 +277,6 @@ plot_lookback_right(
     start_date = "2015-01-01"
 )
 ```
-
----
 
 ## Retail trade
 
@@ -315,8 +300,6 @@ plot_lookback_right(
 )
 ```
 
----
-
 ## Transportation warehousing
 
 ### AMA Job Results
@@ -338,8 +321,6 @@ plot_lookback_right(
     start_date = "2015-01-01"
 )
 ```
-
----
 
 ## Utilities
 
@@ -363,8 +344,6 @@ plot_lookback_right(
 )
 ```
 
----
-
 ## Information
 
 ### AMA Job Results
@@ -386,8 +365,6 @@ plot_lookback_right(
     start_date = "2015-01-01"
 )
 ```
-
----
 
 ## Financial activities
 
@@ -411,8 +388,6 @@ plot_lookback_right(
 )
 ```
 
----
-
 ## Professional business services
 
 ### AMA Job Results
@@ -434,8 +409,6 @@ plot_lookback_right(
     start_date = "2015-01-01"
 )
 ```
-
----
 
 ## Education health services
 
@@ -459,8 +432,6 @@ plot_lookback_right(
 )
 ```
 
----
-
 ## Leisure hospitality
 
 ### AMA Job Results
@@ -482,8 +453,6 @@ plot_lookback_right(
     start_date = "2015-01-01"
 )
 ```
-
----
 
 ## Other services
 
